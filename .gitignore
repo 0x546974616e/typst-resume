@@ -1,0 +1,21 @@
+# Prevent leaks
+configs/*
+!configs/example.yml
+!configs/example.yaml
+!configs/example.png
+!configs/example.jpg
+!configs/example.jpeg
+!configs/example.webp
+
+*.pdf
+!example.pdf
+
+# Swap
+.*.swp
+
+# Session
+Session.vim
+Sessionx.vim
+
+# Temporary
+*~

@@ -1,0 +1,29 @@
+version: 1
+
+picture: configs/example.jpg
+
+skills:
+  - field: Computer Language
+    skills:
+      - C
+      - C++
+      - Rust
+
+experiences:
+  - start: 2000
+    months: 5
+    company: Dada
+    position: Fafa
+    descriptions:
+      - Lorem Ipsum
+      - Dada Fafa
+
+  - start: 2000
+    stop: 2020
+    months: 53
+    company: Gaga
+    position: Haha
+    descriptions:
+      - Lorem Ipsum
+      - Dada Fafa
+      - Gaga Haha
