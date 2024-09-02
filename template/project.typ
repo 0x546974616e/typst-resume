@@ -14,7 +14,7 @@
   ""
 }
 
-#let resume(config) = {
+#let resume(config, lang) = {
   set page(
     margin: 0pt,
   )
@@ -25,6 +25,7 @@
     font: "Quicksand",
     // font: "Lato",
     weight: 400,
+    lang: lang,
   )
 
   let author = fullname(config)
@@ -61,7 +62,7 @@
       v(1.5 * spacing.large)
 
       if "profil" in config {
-        make-fullname(config.profil)
+        make-header(config.profil)
         h2[Profil]
         make-profil(config.profil)
       }
@@ -75,7 +76,12 @@
             body: ( "description", ),
             transform: (
               // months: (month) => [(#month months)],
-              months: (month) => "(" + str(month) + " months)",
+              months: (month) => {
+                "(" + str(month) + get-lang((
+                  en: " months)",
+                  fr: " mois)",
+                ))
+              }
             ),
           ),
         ) // make-table

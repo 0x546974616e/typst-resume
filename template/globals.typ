@@ -16,3 +16,19 @@
   bg2: rgb(60, 120, 216), // light blue
   bg3: rgb(17, 85, 204), // dark blue
 )
+
+// State are boring now...
+#let lang() = sys.inputs.at("lang", default: "en")
+#let get-lang(object) = {
+  if type(object) != "dictionary" {
+    return object
+  }
+
+  let _lang = lang()
+  if not _lang in object {
+    // TODO: Better error handling.
+    panic(_lang + " is missing.")
+  }
+
+  return object.at(_lang)
+}

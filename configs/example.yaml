@@ -2,6 +2,15 @@ version: 1
 
 picture: configs/example.jpg
 
+profil:
+  lastname: DOE
+  firstname: Jane
+  position: Software Engineer
+  email: dada.fafa@example.com
+  phone: 123 456 789
+  address: Here
+  age: 0x18
+
 skills:
   - field: Computer Language
     skills:
@@ -9,21 +18,62 @@ skills:
       - C++
       - Rust
 
-experiences:
-  - start: 2000
-    months: 5
-    company: Dada
-    position: Fafa
-    descriptions:
-      - Lorem Ipsum
-      - Dada Fafa
+  - field: Software
+    skills:
+      - Git
+      - CMake
 
-  - start: 2000
-    stop: 2020
-    months: 53
-    company: Gaga
-    position: Haha
-    descriptions:
-      - Lorem Ipsum
-      - Dada Fafa
-      - Gaga Haha
+interests:
+  - Programming
+  - Cupcakes
+
+experiences:
+  - start: 2021
+    stop: 2023
+    months: 18
+    # break: true
+    company: Acme Corporation
+    position: Software Engineer
+    description:
+      - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      - Dada Fafa gaga haha jaja kaka lala mama.
+
+  - start: 2020
+    months: 6
+    company: FooBar
+    position: Software Developer
+    description:
+      - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      - Dada Fafa gaga haha jaja kaka lala mama.
+
+educations:
+  - start: 2015
+    stop: 2017
+    school: Fafa
+    schooling: Dada
+    description:
+      - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      - Dada Fafa gaga haha jaja kaka lala mama.
+
+  - start: 2015
+    stop: 2017
+    school: Acme School
+    schooling: Computer Engineer
+    description:
+      - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      - Dada Fafa gaga haha jaja kaka lala mama.
+
+projects:
+  - start: 2022
+    stop: Still WIP
+    title: Typst Resume
+    repository: https://github.com/0x546974616e/typst-resume
+    description:
+      - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      - Dada Fafa gaga haha jaja kaka lala mama.
+
+  - start: 2019
+    title: Super Project
+    description:
+      - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      - Dada Fafa gaga haha jaja kaka lala mama.

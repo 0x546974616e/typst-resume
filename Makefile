@@ -2,11 +2,16 @@
 .PHONY: all watch
 
 INPUT = resume.typ
-CONFIG ?= ./configs/example.yaml
 OUTPUT = $(basename $(notdir $(CONFIG))).pdf
 
+LANG ?= en
+CONFIG ?= ./configs/example.yaml
+
+OPTIONS += --input config=$(CONFIG)
+OPTIONS += --input lang=$(LANG)
+
 all:
-	typst compile --input config=$(CONFIG) $(INPUT) $(OUTPUT)
+	typst compile $(OPTIONS) $(INPUT) $(OUTPUT)
 
 watch:
-	typst watch --input config=$(CONFIG) $(INPUT) $(OUTPUT) --open
+	typst watch $(OPTIONS) $(INPUT) $(OUTPUT) --open

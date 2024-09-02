@@ -1,7 +1,6 @@
 
 interface Resume {
   version: 1,
-  lang?: string,
   picture?: string,
   profil?: Profil,
   skills?: Skills[],
@@ -9,6 +8,13 @@ interface Resume {
   experiences?: Experience[],
   educations?: Education[],
   projects?: Project[],
+}
+
+type Field<Type = string> = Type | Translation<Type>
+
+interface Translation<Type = string> {
+  en?: Type,
+  fr?: Type,
 }
 
 // ╔═╗┬┌─┐┬  ┌┬┐┌─┐
@@ -19,11 +25,12 @@ interface Profil {
   firstname?: string,
   lastname?: string,
   position?: string,
+  description?: string,
   github?: string,
-  age?: string,
   email?: string,
-  phone?: string,
   address?: string,
+  phone?: string,
+  age?: string,
 }
 
 interface Skills {
@@ -35,9 +42,9 @@ interface Experience {
   months?: number,
   start?: number,
   stop?: number,
-  company?: string,
-  position?: string,
-  description?: string[],
+  company?: Field<string>,
+  position?: Field<string>,
+  description?: Field<string[]>,
 
   // Vertically aligns "company" and "position".
   break?: boolean,

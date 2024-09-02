@@ -1,4 +1,4 @@
-#import "./globals.typ": colors, spacing
+#import "./globals.typ": colors, spacing, get-lang
 #import "./heading.typ": h3, h4
 
 #let make-picture(picture) = {
@@ -21,7 +21,7 @@
     .filter(info => info != none)
 )
 
-#let make-fullname(profil) = {
+#let make-header(profil) = {
   let items = ()
   let fullname = get-fullname(profil)
 
@@ -47,6 +47,17 @@
     )
   }
 
+  if "description" in profil {
+    items.push(
+      text(
+        size: 1.0em,
+        weight: 400,
+        fill: colors.fg3,
+        profil.description
+      ) // text
+    )
+  }
+
   if items.len() >= 1 {
     stack(
       dir: ttb,
@@ -57,8 +68,6 @@
 }
 
 #let make-profil(profil) = {
-  // make-fullname(profil)
-
   let details = ()
   for info in ("phone", "email", "age", "address", "@github") {
     let href = info.first() == "@"
@@ -78,7 +87,7 @@
 
   if details.len() >= 1 {
     // TODO: TMP
-    let columns = if details.len() == 5 {
+    let columns = if details.len() >= 4 {
       (2fr, 3.5fr, 1fr)
     }
     else {
@@ -86,7 +95,8 @@
     }
 
     table(
-      columns: columns,
+      columns: columns, // (auto, 1fr, auto),
+      // align: (left, center, left),
       gutter: 2 * spacing.large,
       stroke: none,
       inset: 0pt,
@@ -152,12 +162,12 @@
         let header = ()
         let body = ()
 
-        // 1. Date
-        for field in fields.date {
+        // 1. Date & Title
+        for field in (fields.date, fields.title).flatten() {
           let stick = field.first() == "&"
           if stick { field = field.slice(1) }
           if field in object {
-            let item = object.at(field);
+            let item = get-lang(object.at(field));
             if field in fields.transform {
               item = fields.transform.at(field)(item)
             }
@@ -171,29 +181,11 @@
           }
         }
 
-        // 2. Title
-        for field in fields.title {
-          let stick = field.first() == "&"
-          if stick { field = field.slice(1) }
-          if field in object {
-            let item = object.at(field);
-            if field in fields.transform {
-              item = fields.transform.at(field)(item)
-            }
-
-            if header.len() >= 1 and stick {
-              // TODO: Inefficient, check if type is array instead.
-              item = (header.pop(), item)
-            }
-
-            header.push(item)
-          }
-        }
-
-        // 3. Body
+        // 2. Body
         for field in fields.body {
           if field in object {
-            for item in object.at(field) {
+            let items = get-lang(object.at(field))
+            for item in items {
               if field in fields.transform {
                 item = fields.transform.at(field)(item)
               }
