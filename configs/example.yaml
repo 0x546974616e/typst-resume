@@ -5,14 +5,18 @@ picture: configs/example.jpg
 profil:
   lastname: DOE
   firstname: Jane
-  position: Software Engineer
+  position:
+    en: Software Developer
+    fr: Développeur de logiciel
   email: dada.fafa@example.com
   phone: 123 456 789
   address: Here
   age: 0x18
 
 skills:
-  - field: Computer Language
+  - field:
+      en: Computer Language
+      fr: Langage informatique
     skills:
       - C
       - C++
@@ -22,10 +26,16 @@ skills:
     skills:
       - Git
       - CMake
+      - en: Dada
+        fr: Fafa
 
 interests:
-  - Programming
-  - Cupcakes
+  en:
+    - Programming
+    - Cupcakes
+  fr:
+    - Pain
+    - Vin
 
 experiences:
   - start: 2021
@@ -40,11 +50,18 @@ experiences:
 
   - start: 2020
     months: 6
-    company: FooBar
-    position: Software Developer
+    company:
+      en: FooBarEn
+      fr: FooBarFr
+    position:
+      en: Software Developer
+      fr: Développeur de logiciel
     description:
-      - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      - Dada Fafa gaga haha jaja kaka lala mama.
+      en:
+        - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        - Dada Fafa gaga haha jaja kaka lala mama.
+      fr:
+        - J'aime le pain, le fromage et le vin.
 
 educations:
   - start: 2015

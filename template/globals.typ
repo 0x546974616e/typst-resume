@@ -1,10 +1,10 @@
 
-#let column-size = 160pt
+#let column-size = 161pt
 
 #let spacing = (
   small: 2pt,
   medium: 4pt,
-  large: 6pt,
+  large: 8pt,
 )
 
 #let colors = (

@@ -4,11 +4,11 @@
 INPUT = resume.typ
 OUTPUT = $(basename $(notdir $(CONFIG))).pdf
 
-LANG ?= en
+LANGCC ?= en # To avoid conflicts with LANG and LANGUAGE (CC = Country Code).
 CONFIG ?= ./configs/example.yaml
 
 OPTIONS += --input config=$(CONFIG)
-OPTIONS += --input lang=$(LANG)
+OPTIONS += --input lang=$(LANGCC)
 
 all:
 	typst compile $(OPTIONS) $(INPUT) $(OUTPUT)

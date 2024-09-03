@@ -4,7 +4,7 @@ interface Resume {
   picture?: string,
   profil?: Profil,
   skills?: Skills[],
-  interests?: string[],
+  interests?: Field<string[]>,
   experiences?: Experience[],
   educations?: Education[],
   projects?: Project[],
@@ -21,11 +21,12 @@ interface Translation<Type = string> {
 // ╠╣ │├┤ │   ││└─┐
 // ╚  ┴└─┘┴─┘╶┴┘└─┘
 
+// TODO: Translation.
 interface Profil {
   firstname?: string,
   lastname?: string,
-  position?: string,
-  description?: string,
+  position?: Field<string>,
+  description?: Field<string>,
   github?: string,
   email?: string,
   address?: string,
@@ -34,14 +35,14 @@ interface Profil {
 }
 
 interface Skills {
-  field: string,
-  skills: string[],
+  field: Field<string>,
+  skills: Field<string>[],
 }
 
 interface Experience {
-  months?: number,
-  start?: number,
-  stop?: number,
+  months?: Field<number>,
+  start?: Field<number>,
+  stop?: Field<number>,
   company?: Field<string>,
   position?: Field<string>,
   description?: Field<string[]>,
@@ -51,20 +52,20 @@ interface Experience {
 }
 
 interface Education {
-  start?: number,
-  stop?: number,
-  school?: string,
-  schooling?: string,
-  description?: string[],
+  start?: Field<number>,
+  stop?: Field<number>,
+  school?: Field<string>,
+  schooling?: Field<string>,
+  description?: Field<string[]>,
 
   // Vertically aligns "school" and "schooling".
   break?: boolean,
 }
 
 interface Project {
-  start?: number,
-  stop?: number,
-  title?: string,
-  repository?: string,
-  description?: string[],
+  start?: Field<number>,
+  stop?: Field<number>,
+  title?: Field<string>,
+  repository?: Field<string>,
+  description?: Field<string[]>,
 }

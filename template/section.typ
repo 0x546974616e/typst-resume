@@ -3,7 +3,8 @@
 
 #let make-picture(picture) = {
   block(
-    inset: spacing.large,
+    inset: spacing.medium,
+    // inset: spacing.large,
     block(
       clip: true,
       radius: 100%,
@@ -42,7 +43,7 @@
         size: 1.0em,
         weight: 400,
         fill: colors.fg3,
-        profil.position
+        get-lang(profil.position),
       ) // text
     )
   }
@@ -53,7 +54,7 @@
         size: 1.0em,
         weight: 400,
         fill: colors.fg3,
-        profil.description
+        get-lang(profil.description),
       ) // text
     )
   }
@@ -69,6 +70,7 @@
 
 #let make-profil(profil) = {
   let details = ()
+  // TODO: Translate.
   for info in ("phone", "email", "age", "address", "@github") {
     let href = info.first() == "@"
     if href { info = info.slice(1) }
@@ -88,7 +90,7 @@
   if details.len() >= 1 {
     // TODO: TMP
     let columns = if details.len() >= 4 {
-      (2fr, 3.5fr, 1fr)
+      (2fr, 3.25fr, 1fr)
     }
     else {
       (1fr, 1fr, 1fr)
@@ -114,10 +116,10 @@
         stack(
           dir: ttb,
           spacing: 2 * spacing.medium,
-          h3(field, color: colors.fg4),
+          h3(get-lang(field), color: colors.fg4),
           par(
             leading: spacing.medium,
-            skills.map(box).join(", "),
+            skills.map(skill => box(get-lang(skill))).join(", "),
           ) // par
         ) // stack
       } // function
@@ -126,6 +128,7 @@
 }
 
 #let make-interests(interests) = {
+  interests = get-lang(interests)
   stack(
     dir: ttb,
     spacing: spacing.medium,
