@@ -40,7 +40,7 @@
   if "position" in profil {
     items.push(
       text(
-        size: 1.0em,
+        size: 1.125em,
         weight: 400,
         fill: colors.fg3,
         get-lang(profil.position),
