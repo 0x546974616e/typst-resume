@@ -99,7 +99,7 @@
     table(
       columns: columns, // (auto, 1fr, auto),
       // align: (left, center, left),
-      gutter: 2 * spacing.large,
+      gutter: 1.5 * spacing.large,
       stroke: none,
       inset: 0pt,
       ..details,
@@ -159,7 +159,7 @@
 
   stack(
     dir: ttb,
-    spacing: 2 * spacing.large,
+    spacing: 1.5 * spacing.large,
     ..objects.map(
       object => {
         let header = ()
