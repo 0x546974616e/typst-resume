@@ -27,25 +27,39 @@
   let fullname = get-fullname(profil)
 
   if fullname.len() >= 1 {
-    items.push(
-      text(
-        size: 1.5em,
-        weight: 500,
-        fill: colors.fg1,
-        fullname.join(" ")
-      ) // text
-    )
+    fullname = text(
+      size: 1.5em,
+      weight: 500,
+      fill: colors.fg1,
+      fullname.join(" ")
+    ) // text
   }
 
   if "position" in profil {
+    let separator = box(
+      inset: (x: 1em),
+      place(
+        dy: -1.0em,
+        line(
+          angle: 90deg,
+          stroke: 0.5pt + colors.fg3,
+          length: 1.2em,
+        )
+      )
+    ) // box
+
+    let separator = text(fill: colors.fg2)[ *--* ]
     items.push(
-      text(
+      fullname + separator + text(
         size: 1.125em,
         weight: 400,
         fill: colors.fg3,
         get-lang(profil.position),
       ) // text
     )
+  }
+  else {
+    items.push(fullname)
   }
 
   if "description" in profil {
@@ -71,6 +85,13 @@
 #let make-profil(profil) = {
   let details = ()
   // TODO: Translate.
+  let traductions = (
+    "phone": "téléphone",
+    "address": "adresse",
+    "email": "e-mail",
+    "age": "âge",
+  )
+
   for info in ("phone", "email", "age", "address", "@github") {
     let href = info.first() == "@"
     if href { info = info.slice(1) }
@@ -79,7 +100,7 @@
         stack(
           dir: ttb,
           spacing: 2 * spacing.medium,
-          h3(info),
+          h3(traductions.at(info, default: info)),
           if href { link(str(profil.at(info))) }
           else { str(profil.at(info))}
         ) // stack
@@ -193,7 +214,12 @@
                 item = fields.transform.at(field)(item)
               }
 
-              body.push(item)
+              body.push(
+                if item.starts-with("#") {
+                  strong(delta: 100, item.slice(1))
+                }
+                else { item }
+              )
             }
           }
         }

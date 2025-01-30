@@ -49,12 +49,12 @@
       }
 
       if "skills" in config and config.skills.len() >= 1 {
-        h2(color: colors.fg4)[Skills]
+        h2(color: colors.fg4, get-lang((en: "Skills", fr: "Compétences")))
         make-skills(config.skills)
       }
 
       if "interests" in config and config.interests.len() >= 1 {
-        h2(color: colors.fg4)[Interests]
+        h2(color: colors.fg4, get-lang((en: "Interests", fr: "Intérêts")))
         make-interests(config.interests)
       }
     }), // left-panel
@@ -63,12 +63,12 @@
 
       if "profil" in config {
         make-header(config.profil)
-        h2[Profil]
+        h2(get-lang((en: "Profile", fr: "Profil")))
         make-profil(config.profil)
       }
 
       if "experiences" in config and config.experiences.len() >= 1 {
-        h2[Experiences]
+        h2(get-lang((en: "Experiences", fr: "Expériences")))
         make-table(
           config.experiences, (
             date: ( "start", "stop", "&months" ),
@@ -88,7 +88,7 @@
       } // endif
 
       if "educations" in config and config.educations.len() >= 1 {
-        h2[Education]
+        h2(get-lang((en: "Education", fr: "Formations")))
         make-table(
           config.educations, (
             date: ( "start", "stop" ),
@@ -100,7 +100,7 @@
       } // endif
 
       if "projects" in config and config.projects.len() >= 1 {
-        h2[Projects]
+        h2(get-lang((en: "Projects", fr: "Projets")))
         make-table(
           config.projects, (
             date: ( "start", "stop" ),
